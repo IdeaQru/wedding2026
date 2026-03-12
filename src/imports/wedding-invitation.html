@@ -1,0 +1,106 @@
+Buatkan sebuah website undangan pernikahan digital yang elegan, modern, dan mobile-friendly (responsive) menggunakan HTML, CSS, dan JavaScript murni (tanpa framework eksternal kecuali Google Fonts dan AOS.js untuk animasi scroll).
+
+---
+
+## DATA UNDANGAN
+
+- **Mempelai Pria**: Muhamad Khoirun Nasikhin
+- **Putra dari**: Bapak Subendi & Ibu Siti Aminah
+- **Mempelai Wanita**: Hannnisa Kautsarani Hamidah
+- **Putri dari**: Bapak Puji Hermadi (Alm.) & Ibu Sri Utami
+- **Tanggal Akad & Resepsi**: 04 April 2026
+- **Lokasi**: Ds. Ngulanan, Dsn. Cumpleng, RT.7 RW.2, Kec. Dander, Bojonegoro
+
+---
+
+## FITUR & STRUKTUR HALAMAN
+
+### 1. URL Dinamis - Nama Tamu
+- Ambil nama tamu dari parameter URL: `?to=NamaTamu` (contoh: `https://domain.com/?to=Budi+Santoso`)
+- Tampilkan di halaman dengan teks: **"Kepada Yth, [NamaTamu]"**
+- Jika tidak ada parameter, tampilkan default: **"Kepada Yth, Tamu Undangan"**
+- Decode URL encoding (ganti `+` dengan spasi, decode `%20`, dll.)
+
+### 2. Cover / Landing Page (Section 1)
+- Background dengan warna gradient elegan (hijau sage, emas, atau dusty rose)
+- Animasi bunga/daun jatuh menggunakan CSS keyframes
+- Teks "Undangan Pernikahan" dengan font serif mewah
+- Nama kedua mempelai besar di tengah: **Nasikhin & Hannnisa**
+- Tombol **"Buka Undangan"** yang harus diklik dulu sebelum konten terbuka (overlay/envelope effect)
+- Saat tombol diklik, putar audio lagu islami (gunakan tag `<audio autoplay loop>` dengan fallback teks)
+
+### 3. Foto Pasangan (Section 2)
+- Tampilkan **placeholder foto pasangan** menggunakan gambar dari `https://placehold.co/600x800?text=Foto+Pasangan`
+- Desain foto dengan border dekoratif (frame emas atau bunga)
+- Animasi fade-in saat scroll (gunakan AOS.js: `data-aos="fade-up"`)
+
+### 4. Detail Mempelai (Section 3)
+- Dua kolom: Mempelai Pria (kiri) dan Mempelai Wanita (kanan)
+- Tampilkan nama lengkap, nama orang tua
+- Icon ♂ dan ♀ dekoratif
+
+### 5. Detail Acara (Section 4)
+- Kartu untuk **Akad Nikah** dan **Resepsi** (Sabtu, 04 April 2026)
+- Tampilkan ikon 📅 tanggal, 📍 lokasi
+- Tombol **"Buka Maps"** mengarah ke Google Maps dengan query: `Ds. Ngulanan Dander Bojonegoro`
+- **Countdown Timer** real-time menghitung mundur ke 04 April 2026 (tampilkan: Hari, Jam, Menit, Detik)
+
+### 6. Galeri / Foto Pasangan (Section 5)
+- Grid 2-3 foto placeholder menggunakan `https://placehold.co/400x500?text=Foto+1` dst.
+- Animasi zoom-in saat hover
+- Lightbox sederhana saat foto diklik
+
+### 7. Ucapan & Doa (Section 6 - Guestbook)
+- Form input: Nama, Ucapan/Doa, dan pilihan Kehadiran (Hadir / Tidak Hadir / Masih Ragu)
+- Simpan ke `localStorage` dan tampilkan di bawah form sebagai daftar ucapan
+- Animasi slide-in untuk setiap ucapan baru
+
+### 8. Amplop Digital / Gift (Section 7)
+- Judul: **"Kirim Hadiah"**
+- Tampilkan kartu rekening:
+  - BCA: **5545023200** a.n. Muhamad Khoirun Nasikhin
+  - BNI: **1119196275** a.n. Muhamad Khoirun Nasikhin
+  - ShopeePay: **085816458483** a.n. Muhamad Khoirun Nasikhin
+- Tombol **"Salin Nomor"** untuk masing-masing rekening (gunakan `navigator.clipboard.writeText()`)
+- Tampilkan notifikasi kecil "Berhasil disalin!" saat tombol diklik
+
+### 9. Penutup / Footer (Section 8)
+- Tulisan penutup: *"Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir..."*
+- Nama kedua mempelai
+- Ucapan: **"Jazakumullahu Khairan Katsiran"**
+
+---
+
+## DESAIN & ANIMASI
+
+- **Tema warna**: Hijau sage (#8FAF8A), Emas (#C9A84C), Krem (#FDF6EC), Putih Gading (#FAFAF5)
+- **Font**: Gunakan Google Fonts - `Playfair Display` untuk judul, `Poppins` untuk body text
+- **Animasi wajib**:
+  - Partikel bunga/kelopak jatuh di bagian cover (CSS keyframes, buat minimal 10 partikel)
+  - Scroll reveal menggunakan AOS.js (CDN: `https://unpkg.com/aos@2.3.1/dist/aos.js`)
+  - Countdown timer bergerak real-time
+  - Hover effect pada kartu dan tombol
+  - Smooth scroll antar section
+- **Ornamen**: Tambahkan SVG ornamen bunga/daun di bagian header dan footer
+
+---
+
+## TEKNIS
+
+- **File tunggal**: Semua dalam satu file `index.html` (inline CSS dan JS)
+- **Mobile-first**: Gunakan CSS Grid dan Flexbox, breakpoint utama di 768px
+- **Meta viewport**: `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+- **Open Graph tags**: Tambahkan meta OG untuk preview saat dibagikan di WhatsApp
+- **Favicon**: Gunakan emoji 💍 sebagai favicon SVG
+
+---
+
+## CONTOH PENGGUNAAN URL
+
+- `index.html?to=Budi+Santoso` → menampilkan "Kepada Yth, Budi Santoso"
+- `index.html?to=Keluarga%20Besar%20Pak%20Ahmad` → menampilkan "Kepada Yth, Keluarga Besar Pak Ahmad"
+- `index.html` (tanpa parameter) → menampilkan "Kepada Yth, Tamu Undangan"
+
+---
+
+Hasilkan output berupa **satu file HTML lengkap** yang siap dibuka di browser.
